@@ -1,0 +1,271 @@
+* {
+	outline: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	background: #8663C2;	
+	width: 100%;
+}
+
+div[content-form] {
+	width: 420px;
+	min-height: 50px;
+	background: #EEE; 
+	box-shadow: 0px 0px 3px #6441A0;
+	margin:  0 auto;
+	padding-top: 20px;
+	margin-top: 20px;
+}
+
+div[content-form] div[content-logos] {
+	min-height: 10px;
+	overflow: hidden;
+	display: block;
+}
+
+div[content-form] div[logo] {
+	width: 150px;
+	height: 50px;
+	margin: 20px;
+	margin-bottom: 30px;
+/*	background: url('../img/logo/logo_150.png')no-repeat;*/
+	background-size: 100% auto;
+	background-position: center center;
+	float: left;
+}
+
+div[content-form] div[client-logo] {
+	width: 150px;
+	overflow: hidden;
+	min-height: 50px;
+	margin: 20px;
+	float: left;
+}
+
+div[content-form] div[client-logo] div[logo] {
+	width: 150px;
+	min-height: 50px;
+	margin: 0px;
+	background-size: 100% 100% !important;
+	background-position: center center;
+}
+
+div[content-form] div[client-logo] div[logo-chatnizer] {
+	width: 75px;
+	min-height: 25px;
+	/*background: url('../img/logo/logo_150.png')no-repeat;*/
+	background-size: 100% auto;
+	background-position: center center;
+	float: right;
+}
+
+div[content-form] div[title] {
+	font-size: 20px;
+	margin: 30px;
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+div[content-form] div[description] {
+	margin: 30px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	font-size: 15px;
+}
+
+div[content-form] form {
+	padding: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+div[content-form] form input {
+	border: solid 1px #DDD;
+	width: 330px;
+	margin: 20px;
+	margin-top: 0px;
+	padding: 10px;
+	/*border-radius: 3px;*/
+}
+
+div[content-form] form div[input-text]{
+	border: solid 1px #DDD;
+    width: 350px;
+    margin-top: 0px;
+    /*border-radius: 3px;*/
+    overflow: hidden;
+    margin: 20px;
+    margin-top: 0px;
+}
+
+div[content-form] form div[input-text] label {
+	float: left;
+	width: 45px;
+	height: 38px;
+	line-height: 38px;
+	background: #EEE;
+	border-right: solid 1px #DDD;
+	text-align: center;
+	font-size: 17px;
+	color: #999;
+}
+
+div[content-form] form div[input-text] input {
+	float: left;
+	width: 284px;
+	background: #FFF;
+	border: none;
+	margin: 0;
+	border-radius: 0px;
+}
+
+div[content-form] form a[lost-pass] {
+	text-align: right;
+	margin-right: 30px;
+	color: #8663c7;
+	font-size: 13px;
+	float: right;
+}
+
+div[content-form] form button {
+	border: none;
+    color: #6441a4;
+    /*border-radius: 3px;*/
+    padding: 8px 16px;
+    cursor: pointer;
+	background-color: #6441a4;
+    color: #FFF;
+    width: 350px;
+    margin: 20px;
+    margin-top: 10px;
+}
+
+div[content-form] form p {
+	font-size: 12px;
+	padding: 20px;
+	padding-top: 0px;
+	padding-right: 30px;
+}
+
+div[content-form] form p a {
+	color: #8663c7;
+	font-size: 12px;
+}
+
+div[content-form] form div[loader] {
+	/*background: url(/assets/platform/img/loader.svg)no-repeat #F9F9F9;*/
+	box-shadow: 0px 0px 5px #DDD;
+	background-size: 70% auto;
+	background-position: center center;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	height: 98px;
+	margin-top: 125px;
+	margin-bottom: 125px;
+	border-radius: 2px;
+}
+
+div[content-form] form div[error] {
+	display: block;
+	overflow: hidden;
+	width: 100%;
+	padding: 10px 0px;
+	padding-bottom: 0px;
+}
+
+div[content-form] form div[error] p {
+	color: #CC5555;
+}
+
+div[content-form] form[loader] div[loader] {
+	display: block;
+}
+
+div[content-form] form[loader] p, div[content-form] form[loader] button, div[content-form] form[loader] input, div[content-form] form[loader] a, div[content-form] form[loader] button, div[content-form] form[loader] div[error], div[content-form] form[loader] div[input-text] {
+	display: none;
+}
+
+div[content-form] div[line-separator] {
+	border-bottom: solid 1px #DDD;
+	margin: 20px;	
+}
+
+div[content-form] div[line-separator] span {
+	margin: 0 auto;
+	width: 20px;
+	height: 30px;
+	padding: 0px 30px;
+	display: block;
+	margin-bottom: -20px;
+	background: #EEE;
+	text-align: center;
+	color: #777;
+}
+
+div[content-form] button[register] {
+	border: none;
+    color: #6441a4;
+    /*border-radius: 3px;*/
+    padding: 8px 16px;
+    cursor: pointer;
+	background-color: #6441a4;
+    color: #FFF;
+    width: 350px;
+    margin: 30px;
+    margin-top: 5px;
+}
+
+@media only screen and (max-width: 470px) {
+
+	div[content-form] {
+		width: 350px;
+	}
+
+	div[content-form] form input {
+		width: 270px;
+	}
+
+	div[content-form] form button, div[content-form] button[register] {
+		width: 290px;
+	}
+
+	div[content-form] form div[input-text]{
+	    width: 290px;
+	}
+
+	div[content-form] form div[input-text] input {
+		width: 224px;
+	}
+
+}
+
+@media only screen and (max-width: 390px) {
+
+	div[content-form] {
+		width: 250px;
+	}
+
+	div[content-form] form input {
+		width: 170px;
+	}
+
+	div[content-form] form button, div[content-form] button[register] {
+		width: 190px;
+	}
+
+	div[content-form] div[client-logo], div[content-form] div[logo] {
+		margin-right: 0px;
+	}
+
+	div[content-form] form div[input-text]{
+	    width: 190px;
+	}
+
+	div[content-form] form div[input-text] input {
+		width: 124px;
+	}
+
+}

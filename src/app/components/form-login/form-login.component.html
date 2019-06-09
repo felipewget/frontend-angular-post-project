@@ -1,0 +1,24 @@
+<form form-login [formGroup]="formLogin" (ngSubmit)="onSubmit( $event )" >
+
+	<div *ngIf="!loadingForm"> 
+		<div input-text >
+			<label class="icon-mail"></label>
+			<input type="text" name="email" formControlName="email"  placeholder="E-mail"/>
+		</div>
+		<div input-text>
+			<label class="icon-key"></label>
+			<input type="password" name="password" formControlName="password" placeholder="Senha"/>
+		</div>
+		<a routerLink="/" lost-pass>Esqueci a Senha ( not implemented ) </a>
+		
+
+		<div error *ngIf="error !== ''">
+			<p>{{ error }}</p>
+		</div>
+
+		<button>Login</button>
+	</div>
+
+	<div loader *ngIf="loadingForm">loader</div>
+
+</form>

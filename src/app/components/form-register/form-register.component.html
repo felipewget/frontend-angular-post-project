@@ -1,0 +1,25 @@
+<form form-login [formGroup]="formRegister" (ngSubmit)="onSubmit( $event )" >
+
+	<div *ngIf="!loadingForm"> 
+
+		<input type="text" name="full_name" placeholder="Nome Completo" formControlName="name"/>
+		<div input-text>
+			<label class="icon-mail"></label>
+			<input type="text" name="email" placeholder="E-mail" formControlName="email" />
+		</div>
+		<div input-text>
+			<label class="icon-key"></label>
+			<input type="password" name="password" placeholder="Password" formControlName="password"/>
+		</div>
+		
+		<div error *ngIf="error !== ''">
+			<p>{{ error }}</p>
+		</div>
+
+		<button>Criar minha conta</button>
+
+		<div loader *ngIf="loadingForm">loader</div>
+
+	</div>
+
+</form>
