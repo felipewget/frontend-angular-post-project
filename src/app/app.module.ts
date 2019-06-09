@@ -12,6 +12,10 @@ import { FormRegisterComponent }   from './components/form-register/form-registe
 
 import { FeedComponent }   from './screens/feed/feed.component';
 
+import { HeaderComponent }            from './components/header/header.component';
+import { PostComponent }              from './components/post/post.component';
+import { PanelCreatePostComponent }   from './components/panel-create-post/panel-create-post.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,11 +24,15 @@ import { FeedComponent }   from './screens/feed/feed.component';
     FormLoginComponent,
     FormRegisterComponent,
     FeedComponent,
+    HeaderComponent,
+    PostComponent,
+    PanelCreatePostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutesModule,
-    FormsModule, ReactiveFormsModule
+    FormsModule, 
+    ReactiveFormsModule
   ],
   providers: [
     Title,

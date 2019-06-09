@@ -1,0 +1,75 @@
+div[post] {
+	box-shadow: 0px 0px 3px #CCC;
+	border-radius: 3px;
+	border: solid 1px #CCC;
+	overflow: hidden;
+	padding: 5px;
+	margin: 10px;
+	display: block;
+	margin-top: 0px;
+}
+
+div[administrative-options] {
+	border-bottom: solid 1px #CCC;
+	padding: 10px;
+	overflow: hidden;
+}
+
+div[administrative-options] button {
+	border: none;
+	background: transparent;
+	float: left;
+	margin-right: 10px;
+	font-size: 14px;
+	color: #555;
+	margin-right: 15px;
+}
+
+div[header] {
+	overflow: hidden;
+	padding: 10px;
+}
+
+div[header] p[name] {
+	font-size: 14px;
+	color: #555;
+	float: left;
+}
+
+div[header] p[timstamp] {
+	font-size: 13px;
+	color: #777;
+	float: right;
+}
+
+div[categorys] {
+	overflow: hidden;
+	padding: 5px;
+	padding-top: 0px;
+}
+
+div[categorys] p {
+	float: left;
+	margin: 5px;
+	background: #A885E5;
+	color: #FFF;
+	font-size: 12px;
+	padding: 3px 7px;
+}
+
+div[text] {
+	font-size: 14px;
+	color: #555;
+	overflow: hidden;
+	padding: 10px;
+	padding-top: 0px;
+}
+
+div[media] {
+	width: 550px;
+	margin: 0px 10px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	background: #555;
+	color: #FFF;
+}
