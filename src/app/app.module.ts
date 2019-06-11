@@ -16,6 +16,8 @@ import { HeaderComponent }            from './components/header/header.component
 import { PostComponent }              from './components/post/post.component';
 import { PanelCreatePostComponent }   from './components/panel-create-post/panel-create-post.component';
 
+import { LoadingPageComponent }       from './components/loading-page/loading-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +29,7 @@ import { PanelCreatePostComponent }   from './components/panel-create-post/panel
     HeaderComponent,
     PostComponent,
     PanelCreatePostComponent,
+    LoadingPageComponent
   ],
   imports: [
     BrowserModule,

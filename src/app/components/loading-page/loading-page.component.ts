@@ -8,13 +8,12 @@ import { FormsModule,ReactiveFormsModule, FormGroup, FormControl, Validators, Fo
 import { Categorys } from './../../shared/categorys';
 
 @Component({
-  selector: 'component-panel-create-post',
-  templateUrl: './panel-create-post.component.html',
-  styleUrls: ['./panel-create-post.component.css'],
-  //assets/vendors/ng-tag/ng-tags-input.min.css
+  selector: 'component-loading-page',
+  templateUrl: './loading-page.component.html',
+  styleUrls: ['./loading-page.component.css'],
 })
 
-export class PanelCreatePostComponent implements OnInit {
+export class LoadingPageComponent implements OnInit {
 
 	formCategoryLabels: FormGroup;
 

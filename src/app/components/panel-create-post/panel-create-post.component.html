@@ -1,12 +1,35 @@
 <div content-panel-create-post>
 	<div text-publication placeholder="Type your message here..." contenteditable="true"></div>
 	<div container-panel>
-		<button add-image class="icon-images"></button>
+
+		<div container-categorys>
+
+			<form [formGroup]="formCategoryLabels" (ngSubmit)="onAddLabel( $event )" >
+				<i class="icon-label"></i>
+				<input type="text" placeholder="Type your category here" formControlName="category" />
+			</form>
+
+			<ul>
+			    <li *ngFor="let category of categorys_to_post;  let i = index">
+			      {{ category }}
+			      <i class="icon-close" (click)="deleteCategoryLabel( $event, i )" ></i>
+			    </li>
+			</ul>
+
+		</div>
+
 		<button publish>Publish</button>
+		<button add-image class="icon-image"></button>
+
 	</div>
 
 	<div container-more-image>
-		<div data-more-image></div>
+
+		<div data-image-post *ngFor="let obj_image of images_to_post;  let i = index" >
+			BKGD IMAGE
+		</div>
+
+		<div data-more-image class="icon-plus"></div>
 	</div>
 
 </div>
