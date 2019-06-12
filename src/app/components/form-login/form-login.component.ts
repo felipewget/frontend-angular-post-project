@@ -6,6 +6,8 @@ import { FormsModule,ReactiveFormsModule, FormGroup, FormControl, Validators, Fo
 
 import { Users } from './../../shared/users';
 
+import { authenticate } from '../../actions/auth';
+
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -33,21 +35,24 @@ export class FormLoginComponent implements OnInit {
 	    })
 	}
 
-	onSubmit() {
+	async onSubmit() {
 
 		let self = this;
 
 		self.loadingForm = true;
 
-		self.error = 'mensagem de erro';
+		let { email, password } = self.formLogin.value;
 
-		setTimeout( function(){
+		let login_response = await authenticate( email, password );
 
+		if( !login_response ){
+			
+			self.error = 'Autenticacao Invalida';
 			self.loadingForm = false;
-			console.log(self.formLogin.value);
-	  		return false;
 
-		}, 3000)
+		}
+		
+		return false;
 
 	}
 

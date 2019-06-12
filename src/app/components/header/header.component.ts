@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import {Title} from "@angular/platform-browser";
 import { ActivatedRoute } from '@angular/router';
 
+import { logout } from '../../actions/auth';
+
 @Component({
   selector: 'component-header',
   templateUrl: './header.component.html',
@@ -12,9 +14,18 @@ import { ActivatedRoute } from '@angular/router';
 
 export class HeaderComponent implements OnInit {
 
+	username = '';
+
 	constructor(){}
 
+	logoutFeed()
+	{
+		logout();
+	}
+
 	ngOnInit(){
+
+		this.username = localStorage.getItem( 'username' );
 		
 	}
 

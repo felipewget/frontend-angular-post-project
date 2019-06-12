@@ -1,5 +1,9 @@
-<div content-panel-create-post>
-	<div text-publication placeholder="Type your message here..." contenteditable="true"></div>
+<div loading-posting *ngIf="loadingPost">
+	<p>Postando...</p>
+</div>
+
+<div content-panel-create-post *ngIf="!loadingPost" >
+	<div text-publication placeholder="Type your message here..." contenteditable="true" ></div>
 	<div container-panel>
 
 		<div container-categorys>
@@ -18,7 +22,7 @@
 
 		</div>
 
-		<button publish>Publish</button>
+		<button publish (click)="createPost()" >Publish</button>
 		<button add-image class="icon-image"></button>
 
 	</div>

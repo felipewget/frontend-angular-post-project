@@ -5,7 +5,18 @@ div[loading-page] {
 	position: fixed;
 	left: 0;
 	top: 0;
+}
+
+div[loading-page] p {
+	width: 300px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin-left: -150px;
+	margin-top: -25px;
+	height: 30px;
+	line-height: 30px;
 	text-align: center;
-	line-height: 50%;
+	font-size: 13px;
 	color: #FFF;
 }

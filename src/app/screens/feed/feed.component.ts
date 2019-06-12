@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Title} from "@angular/platform-browser";
+import { checkAuth } from '../../actions/auth';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -15,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class FeedComponent implements OnInit {
 
+	loading:boolean = true;
 	title = 'Feed';
 	actual_year = new Date().getFullYear();
 
@@ -26,9 +28,17 @@ export class FeedComponent implements OnInit {
 
 	}
 
-	ngOnInit() {
+	async ngOnInit() {
 
-	
+		let self = this;
+
+		let authenticated = await checkAuth();
+		
+		if( authenticated !== true ){
+			window.location.href = '/login';
+		} else {
+			self.loading = false;
+		}
 
 	}
 

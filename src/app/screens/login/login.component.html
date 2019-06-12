@@ -1,4 +1,5 @@
-<div content-form>
+<component-loading-page *ngIf="loading"></component-loading-page>
+<div content-form *ngIf="!loading">
 
 	<div title>Fazer Login</div>
 	

@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Title} from "@angular/platform-browser";
 
+import { checkAuth } from '../../actions/auth';
+
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,7 +17,8 @@ import { ActivatedRoute } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-	title = 'Login';
+	loading: boolean = true;
+	title: string = 'Login';
 	actual_year = new Date().getFullYear();
 
 	constructor(private route: ActivatedRoute, private titleService: Title ) { 
@@ -26,9 +29,17 @@ export class LoginComponent implements OnInit {
 
 	}
 
-	ngOnInit() {
+	async ngOnInit() {
 
-	
+		let self = this;
+
+		let authenticated = await checkAuth();
+		
+		if( authenticated === true ){
+			window.location.href = '/feed';
+		} else {
+			self.loading = false;
+		}
 
 	}
 

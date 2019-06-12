@@ -6,6 +6,8 @@ import { FormsModule,ReactiveFormsModule, FormGroup, FormControl, Validators, Fo
 
 import { Users } from './../../shared/users';
 
+import { register, authenticate } from '../../actions/auth';
+
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -34,21 +36,35 @@ export class FormRegisterComponent implements OnInit {
 	    })
 	}
 
-	onSubmit() {
+	async onSubmit() {
 
 		let self = this;
 
 		self.loadingForm = true;
 
-		self.error = 'mensagem de erro';
+		let { name, email, password } = self.formRegister.value;
 
-		setTimeout( function(){
+		let login_response = await register( name, email, password );
 
+		if( login_response.success === false ){
+			
+			if( login_response.error ){
+				self.error = login_response.error;
+			}
+
+			if( login_response.message ){
+				self.error = login_response.message;
+			}
+			
 			self.loadingForm = false;
-			console.log(self.formRegister.value);
-	  		return false;
 
-		}, 3000)
+		} else {
+
+			authenticate( email, password )
+
+		}
+		
+		return false;
 
 	}
 

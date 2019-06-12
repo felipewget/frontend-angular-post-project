@@ -123,3 +123,10 @@ div[data-image-post] {
 	background-size: 100% auto;
 	background-position: center center;
 }
+
+div[loading-posting] {
+	padding: 50px;
+	text-align: center;
+	font-size: 13px;
+	color: #777;
+}

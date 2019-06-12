@@ -7,14 +7,17 @@ import { FormsModule,ReactiveFormsModule, FormGroup, FormControl, Validators, Fo
 
 import { Categorys } from './../../shared/categorys';
 
+import { publish } from '../../actions/post';
+
 @Component({
   selector: 'component-panel-create-post',
   templateUrl: './panel-create-post.component.html',
-  styleUrls: ['./panel-create-post.component.css'],
-  //assets/vendors/ng-tag/ng-tags-input.min.css
+  styleUrls: ['./panel-create-post.component.css']
 })
 
 export class PanelCreatePostComponent implements OnInit {
+
+	loadingPost = false;
 
 	formCategoryLabels: FormGroup;
 
@@ -64,6 +67,16 @@ export class PanelCreatePostComponent implements OnInit {
 		}
 		
 		return false;
+
+	}
+
+	createPost()
+	{
+	
+		this.loadingPost = true;
+
+		publish( "ola", [], categorys_to_post );
+		
 
 	}
 
