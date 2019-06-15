@@ -5,11 +5,13 @@
 
 	<div container-timeline>
 
-		<component-panel-create-post></component-panel-create-post>
+		<component-panel-create-post (emitCreatedPost)="addPublication( $event )" ></component-panel-create-post>
 		
-		<component-post></component-post>
-		<component-post></component-post>
-		<component-post></component-post>
+		<div *ngFor="let publication of feed;  let i = index">
+			<component-post [publication]="publication" (emitRemovePost)="removePublication( $event )" ></component-post>
+		</div>
+		<!-- <component-post></component-post>
+		<component-post></component-post> -->
 
 		<button load-more title="Carregar Mais" class="icon-more_horiz"></button>
 

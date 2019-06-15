@@ -15,8 +15,9 @@ export function checkAuth(){
 
 		  	if( res.data.metadata && res.data.metadata._id ){
 		  		
-		  		localStorage.setItem('username', res.data.metadata.name.name.first_name + ' ' + res.data.metadata.name.name.last_name );
+		  		localStorage.setItem('username', res.data.metadata.name.first_name + ' ' + res.data.metadata.name.last_name );
 			  	localStorage.setItem('auth_token', auth_token );
+			  	localStorage.setItem('_id', res.data.metadata._id );
 			  	return resolve( true );
 
 		  	} else {
@@ -49,6 +50,7 @@ export function authenticate( login , password ){
 		if( res.data && res.data.metadata && res.data.metadata.access_token ){
 
 			localStorage.setItem('auth_token', res.data.metadata.access_token );
+			localStorage.setItem('_id', res.data.metadata._id );
 			location.reload();
 
 			return resolve( true )
@@ -87,6 +89,8 @@ export function logout(){
 		let auth_token = localStorage.getItem('auth_token');
 
 		let res = await axios.delete('//localhost:8080/logout?token=' + auth_token);
+		console.log( logout );
+		console.log( res );
 		localStorage.removeItem('auth_token');
 		location.reload();
 		

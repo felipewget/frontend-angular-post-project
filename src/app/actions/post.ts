@@ -3,11 +3,15 @@ import { AxiosInstance } from "axios";
 import { ErrorHandler } from "@angular/core";
 import { Injectable } from "@angular/core";
 
-export function listFeed( page, categorys ){
+export function listPosts( page, categorys ){
 	
 	return new Promise( async (resolve, reject) => {
 
-		
+		let auth_token = localStorage.getItem('auth_token');
+
+		let res = await axios.get( '//localhost:8080/posts?page=' + page + '&categorys=' + categorys + '&token=' + auth_token );
+
+		return resolve( res.data );
 
 	});
 
@@ -26,10 +30,8 @@ export function publish( text, medias, categorys ){
 									  	categorys	: categorys,
 									  	token		: auth_token,
 									});
-		
-		console.log( res );
 
-		return resolve( false );
+		return resolve( res.data );
 		
 	});
 
@@ -37,6 +39,19 @@ export function publish( text, medias, categorys ){
 
 export function deletePost( id ){
 	
+	return new Promise( async (resolve, reject) => {
+
+		let auth_token = localStorage.getItem('auth_token');
+
+		let res = await axios.delete('//localhost:8080/post?post_id=' + id + '&token=' + auth_token );
+		
+		console.log( res );
+
+		// @TODO fazer
+		return resolve( false );
+		
+	});
+
 }
 
 export function updatePost( id ){

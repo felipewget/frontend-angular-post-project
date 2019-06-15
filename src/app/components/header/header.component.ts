@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
 
 	logoutFeed()
 	{
+	console.log( 'aaa');
 		logout();
 	}
 

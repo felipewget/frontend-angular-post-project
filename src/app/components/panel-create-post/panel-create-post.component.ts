@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Title} from "@angular/platform-browser";
@@ -20,6 +20,8 @@ export class PanelCreatePostComponent implements OnInit {
 	loadingPost = false;
 
 	formCategoryLabels: FormGroup;
+
+	@Output() emitCreatedPost = new EventEmitter();
 
 	public categorys_to_post = [];
 	public images_to_post = [{
@@ -70,12 +72,14 @@ export class PanelCreatePostComponent implements OnInit {
 
 	}
 
-	createPost()
+	async createPost()
 	{
 	
 		this.loadingPost = true;
 
-		publish( "ola", [], categorys_to_post );
+		let res = await publish( "ola", [], this.categorys_to_post );
+
+		this.emitCreatedPost.emit( res )
 		
 
 	}
