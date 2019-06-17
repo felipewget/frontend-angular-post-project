@@ -17,6 +17,20 @@ export function listPosts( page, categorys ){
 
 }
 
+export function getPostById( _id ){
+	
+	return new Promise( async (resolve, reject) => {
+
+		let auth_token = localStorage.getItem('auth_token');
+
+		let res = await axios.get( '//localhost:8080/post/' + _id + '?token=' + auth_token );
+
+		return resolve( res.data );
+		
+	});
+
+}
+
 export function publish( text, medias, categorys ){
 	
 	return new Promise( async (resolve, reject) => {
@@ -54,6 +68,22 @@ export function deletePost( id ){
 
 }
 
-export function updatePost( id ){
+export function updatePost( id, text, medias, categorys ){
 	
+	return new Promise( async (resolve, reject) => {
+
+		let auth_token = localStorage.getItem('auth_token');
+
+		let res = await axios.put('//localhost:8080/post/' + id + '/edit',
+									{
+										text		: text ,
+									  	medias		: [], // @todo fazer
+									  	categorys	: categorys,
+									  	token		: auth_token,
+									});
+		
+		return resolve( res.data );
+		
+	});
+
 }

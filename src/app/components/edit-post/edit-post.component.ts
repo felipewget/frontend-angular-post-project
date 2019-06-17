@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, EventEmitter, Output, Input } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Title} from "@angular/platform-browser";
@@ -7,24 +7,25 @@ import { FormsModule,ReactiveFormsModule, FormGroup, FormControl, Validators, Fo
 
 import { Categorys } from './../../shared/categorys';
 
-import { publish } from '../../actions/post';
-import { uploadMedia } from '../../actions/media';
+import { updatePost } from '../../actions/post';
 
 @Component({
-  selector: 'component-panel-create-post',
-  templateUrl: './panel-create-post.component.html',
-  styleUrls: ['./panel-create-post.component.css']
+  selector: 'component-edit-post',
+  templateUrl: './edit-post.component.html',
+  styleUrls: ['./edit-post.component.css']
 })
 
-export class PanelCreatePostComponent implements OnInit {
+export class EditPostComponent implements OnInit {
 
+	loadingComponent = false;
 	loadingPost = false;
 	containerImages = false;
-	text = '';
 
 	formCategoryLabels: FormGroup;
 
-	@Output() emitCreatedPost = new EventEmitter();
+	@Input() form_edit;
+	@Output() emitUpdatePost = new EventEmitter();
+	@Output() emitCloseModal  = new EventEmitter();
 
 	public categorys_to_post = [];
 	public images_to_post = [{
@@ -60,6 +61,15 @@ export class PanelCreatePostComponent implements OnInit {
 
 	}
 
+	closeModalEdit()
+	{
+
+		let self = this;
+
+		this.emitCloseModal.emit( true );
+
+	}
+
 	onAddLabel() {
 
 		let self = this;
@@ -83,27 +93,19 @@ export class PanelCreatePostComponent implements OnInit {
 
 	}
 
-	fileChanged( event )
-	{
-
-		var file = event.target.files[0]
-
-		uploadMedia( file );
-
-	}
-
-	async createPost()
+	async updatePost()
 	{
 	
 		this.loadingPost = true;
-		let res = await publish( this.text, [], this.categorys_to_post );
 
-		this.emitCreatedPost.emit( res )
+		let res = await updatePost( this.form_edit._id, this.form_edit.text, [], this.categorys_to_post );
+
+		this.emitUpdatePost.emit( res.metadata );
+		this.emitCloseModal.emit( true );
 
 		this.categorys_to_post = [];
 		this.images_to_post = [];
 		this.containerImages = false;
-		this.text = '';
 
 		this.loadingPost = false;
 		
@@ -111,7 +113,12 @@ export class PanelCreatePostComponent implements OnInit {
 	}
 
 	ngOnInit(){
+
+		this.categorys_to_post = this.form_edit.categorys_name.map( (item) => item.name );
+
+		console.log( this.form_edit );
 		this.createCategoryForm(new Categorys());
+
 	}
 
 }

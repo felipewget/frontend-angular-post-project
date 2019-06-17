@@ -2,13 +2,13 @@
 <div content-form *ngIf="!loading">
 
 	<component-header></component-header>
-
+ 
 	<div container-timeline>
 
 		<component-panel-create-post (emitCreatedPost)="addPublication( $event )" ></component-panel-create-post>
 		
 		<div *ngFor="let publication of feed;  let i = index">
-			<component-post [publication]="publication" (emitRemovePost)="removePublication( $event )" ></component-post>
+			<component-post [publication]="publication" (emitRemovePost)="removePublication( $event )" (emitEditPost)="openModalEdit( $event )" ></component-post>
 		</div>
 		<!-- <component-post></component-post>
 		<component-post></component-post> -->
@@ -16,6 +16,8 @@
 		<button load-more title="Carregar Mais" class="icon-more_horiz"></button>
 
 	</div>
+
+	<component-edit-post [form_edit]="form_edit" *ngIf="editingPost" (emitCloseModal)="closeModalEditPost( $event )" (emitUpdatePost)="updatePost( $event )" ></component-edit-post>
 
 	<div footer>&copy; Todos os Direitos Reservados</div>
 

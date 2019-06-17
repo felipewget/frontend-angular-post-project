@@ -19,6 +19,7 @@ export class PostComponent implements OnInit {
 	my_publication = false;
 
 	@Output() emitRemovePost = new EventEmitter();
+	@Output() emitEditPost = new EventEmitter();
 
 	constructor(){}
 
@@ -38,6 +39,13 @@ export class PostComponent implements OnInit {
 		return my_user_id.toString() === publication.user[0]._id.toString()
 			? true
 			: false ;
+
+	}
+
+	openModalEdit( publication )
+	{
+
+		this.emitEditPost.emit( publication );
 
 	}
 

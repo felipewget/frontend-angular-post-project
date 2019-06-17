@@ -5,7 +5,7 @@ import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import {Title} from "@angular/platform-browser";
 
 import { checkAuth } from '../../actions/auth';
-import { listPosts, deletePost } from '../../actions/post';
+import { listPosts, deletePost, getPostById } from '../../actions/post';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -20,10 +20,18 @@ export class FeedComponent implements OnInit {
 
 	page = 0;
 	categorys = [];
+	editingPost = false;
 	loading = true;
 	title = 'Feed';
 	actual_year = new Date().getFullYear();
 	feed = [];
+
+	form_edit = {
+		medias: [],
+		categorys: [],
+		text: '',
+		_id: null,
+	}
 
 	constructor(private route: ActivatedRoute, private titleService: Title ) { 
 		
@@ -33,10 +41,30 @@ export class FeedComponent implements OnInit {
 
 	}
 
-	addPublication( obj_publication )
+	async openModalEdit( publication )
 	{
-	console.log( obj_publication.metadata._id );
-		//this.feed.unshift( obj_publication.metadata );
+
+		this.form_edit.medias = [], // @TODO fazer
+		this.form_edit.categorys_name = publication.categorys_name,
+		this.form_edit.text = publication.text
+		this.form_edit._id = publication._id
+
+		this.editingPost = true;
+
+	}
+
+	async addPublication( obj_publication )
+	{
+
+		var post = await getPostById( obj_publication.metadata._id );
+		this.feed.unshift( post.metadata );
+
+	}
+
+	closeModalEditPost()
+	{
+	console.log( ' chegou aqui ')
+		this.editingPost = false;
 	}
 
 	removePublication( _id )
@@ -50,6 +78,27 @@ export class FeedComponent implements OnInit {
 
 	}
 
+	updatePost( publication )
+	{
+
+		let self = this;
+
+		if( publication._id ){
+
+			for( var i in self.feed ){
+
+				if( self.feed[i]._id.toString() === publication._id.toString() ){
+
+					self.feed[i] = publication;
+
+				}
+
+			}
+
+		}
+
+	}
+
 	async loadPosts()
 	{
 
@@ -60,9 +109,11 @@ export class FeedComponent implements OnInit {
 		var posts = await listPosts( self.page, self.categorys );
 
 		for( var i in posts.metadata ){
-			console.log( posts.metadata[i] )
+			console.log( posts )
 			self.feed.push( posts.metadata[i] );
 		}
+
+		return true;
 
 	}
 
@@ -78,7 +129,7 @@ export class FeedComponent implements OnInit {
 			self.loading = false;
 		}
 
-		self.loadPosts();
+		await self.loadPosts();
 
 	}
 

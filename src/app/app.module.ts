@@ -10,6 +10,8 @@ import { FormLoginComponent }   from './components/form-login/form-login.compone
 import { RegisterComponent }   from './screens/register/register.component';
 import { FormRegisterComponent }   from './components/form-register/form-register.component';
 
+import { EditPostComponent }   from './components/edit-post/edit-post.component';
+
 import { FeedComponent }   from './screens/feed/feed.component';
 
 import { HeaderComponent }            from './components/header/header.component';
@@ -29,7 +31,8 @@ import { LoadingPageComponent }       from './components/loading-page/loading-pa
     HeaderComponent,
     PostComponent,
     PanelCreatePostComponent,
-    LoadingPageComponent
+    LoadingPageComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <div post>
 
 	<div administrative-options *ngIf="my_publication" >
-		<button>
+		<button (click)="openModalEdit( publication )">
 			<i class="icon-edit"></i>
 			Editar
 		</button>
