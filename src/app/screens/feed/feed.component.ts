@@ -63,7 +63,7 @@ export class FeedComponent implements OnInit {
 
 	closeModalEditPost()
 	{
-	console.log( ' chegou aqui ')
+		console.log( ' chegou aqui ')
 		this.editingPost = false;
 	}
 
@@ -109,7 +109,7 @@ export class FeedComponent implements OnInit {
 		var posts = await listPosts( self.page, self.categorys );
 
 		for( var i in posts.metadata ){
-			console.log( posts )
+			console.log( posts.metadata )
 			self.feed.push( posts.metadata[i] );
 		}
 

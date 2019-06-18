@@ -23,24 +23,22 @@
 		</div>
 
 		<button publish (click)="createPost()" >Publish</button>
-		<button add-image (click)="openContainerImages()" class="icon-image"></button>
+		<button add-image *ngIf="!containerImages" (click)="openContainerImages()" class="icon-image"></button>
 
 	</div>
 
-	<input type="file" (change)="fileChanged( $event )" />
+	<input type="file" (change)="fileChanged( $event )" #file />
 	<div container-more-image *ngIf="containerImages" >
 
 		<div data-image-post *ngFor="let obj_image of images_to_post;  let i = index" >
 
-			<div background-loading *ngIf="obj_image.state == 'loading'" ></div>
-
-			<div background-preview-image *ngIf="obj_image.state == 'done'" >
-				<span remove-image></span>
+			<div background-preview-image [ngStyle]="{'background': '#fff url( //localhost:8080/uploads/posts_medias/' + obj_image.name + ') no-repeat'}" >
+				<span remove-image class="icon-close" (click)="removeMedia( i )" ></span>
 			</div>
 			
 		</div>
 
-		<div data-more-image class="icon-plus"></div>
+		<div data-more-image class="icon-plus" (click)="file.click()" ></div>
 	</div>
 
 </div>

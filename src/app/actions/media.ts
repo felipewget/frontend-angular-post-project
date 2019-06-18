@@ -10,7 +10,7 @@ export function uploadMedia( media ){
 		let auth_token = localStorage.getItem('auth_token');
 
 		var form = new FormData();
-		await form.append('file', media );
+		await form.append('media', media );
 		await form.append('token', auth_token );
 
 		var resp = await axios.post('//localhost:8080/media/upload', form, { headers: { 'Content-Type': 'multipart/form-data' } } );

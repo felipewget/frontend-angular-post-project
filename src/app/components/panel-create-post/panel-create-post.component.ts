@@ -27,11 +27,7 @@ export class PanelCreatePostComponent implements OnInit {
 	@Output() emitCreatedPost = new EventEmitter();
 
 	public categorys_to_post = [];
-	public images_to_post = [{
-		state	: "loading",
-		id 		: "84984984",
-		preview : "https://i.stack.imgur.com/Nc30D.png"
-	}];
+	public images_to_post = [];
 
 	constructor( private formBuilder: FormBuilder ){}
 
@@ -83,12 +79,22 @@ export class PanelCreatePostComponent implements OnInit {
 
 	}
 
-	fileChanged( event )
+	async fileChanged( event )
 	{
 
 		var file = event.target.files[0]
 
-		uploadMedia( file );
+		let media = await uploadMedia( file );
+
+		this.containerImages = true;
+		this.images_to_post.push( media.metadata )
+
+	}
+
+	removeMedia( index )
+	{
+
+		this.images_to_post.splice(index, 1);
 
 	}
 
