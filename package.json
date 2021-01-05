@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.0.0",
     "@angular/router": "~8.0.0",
     "@types/axios": "^0.14.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "ng-tags-input": "^3.2.0",
     "ngx-tags-input": "^2.0.1",
     "rxjs": "~6.4.0",
